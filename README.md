@@ -2,7 +2,7 @@
 [![LICENSE](https://img.shields.io/github/license/arshadkazmi42/awesome-github-init.svg)](https://github.com/arshadkazmi42/awesome-github-init/LICENSE)
 
 ![SOAP-JSON](https://user-images.githubusercontent.com/67064886/88652921-ce704e00-d0a1-11ea-96bc-929e5708665c.png)
-
+<br>
 
 
 # Description 
@@ -10,7 +10,7 @@
 If you also hate to create interactions that communicate with the soap protocol, now use
 a json instead of xml. I created some examples of communications in / controllers, it is very
 difficult nowadays, to find some wsdl that are active. 😧
-
+<br>
 
 
 ### Sample request using CURL in the command line/terminal:
@@ -18,11 +18,13 @@ difficult nowadays, to find some wsdl that are active. 😧
 ```
 curl -X POST -d 'x=-46.6520066&y=-23.5650127' http://localhost:4007/api/getAddress
 ```
+<br>
 
 
 ### Access the documentation for all methods in the swagger 🥇
 
  http://localhost:4007/api/docs
+<br>
 
 
 ---
@@ -35,13 +37,14 @@ You will need to install some stuff, if they are not yet installed in your machi
 
 * [Node.js (v4.3.2 or higher; LTS)](http://nodejs.org)
 * [NPM (v3.5+; bundled with node.js installation package)](https://docs.npmjs.com/getting-started/installing-node#updating-npm)
-
+<br>
 
 ---
 
 ### Install through Github :octocat:
 
 Best way to install Project Mulla is to clone it from Github
+<br>
 
 **To clone/download the boilerplate**
 
@@ -62,6 +65,7 @@ $ npm install
 
 ```
 
+
 ### copy the .env-examples file to .env
 
 ```
@@ -74,6 +78,7 @@ $ cp .env-examples .env
 $ npm start
 
 ```
+<br>
 
 
 ---
@@ -86,10 +91,12 @@ $ docker build -t rest-to-soap/node-api .
 ```
 <br>
 
+
 ![run-soap](https://user-images.githubusercontent.com/67064886/88652554-615cb880-d0a1-11ea-9449-d14636f0ef1d.png)
 ```
 $ docker run -p 4007:4007 rest-to-soap/node-api
 ```
+<br>
 
 
 ### Running PM2
@@ -99,15 +106,7 @@ $ docker run -p 4007:4007 rest-to-soap/node-api
 ```
 $ pm2 start pm2.config,js
 ```
-
+<br>
 
 ## 🔓 Licença 
 MIT © [Erlan Lucio](https://www.linkedin.com/in/erlanlucio/)
-
-
-
-
-
-
-
-
