@@ -11,12 +11,6 @@ const Controllermaplink = require('../controllers/maplinkController');
 const correiosController = require('../controllers/correiosController');
 
 
-router.get('/api', (req, res) =>
-  res.json({
-    status: 'API Working!',
-  })
-);
-
 
 router.post('/getAddress', Controllermaplink.getAddress);
 router.post('/findCity', Controllermaplink.findCity);
