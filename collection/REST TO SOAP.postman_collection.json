@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "6024865f-3cb6-4d9d-9f6b-636417140a8c",
+		"name": "REST TO SOAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAddress",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"x\" : \"-46.6520066\",\r\n    \"y\" : \"-23.5650127\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4007/api/getAddress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4007",
+					"path": [
+						"api",
+						"getAddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findCity",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"São Paulo\",\r\n    \"state\" : \"SP\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4007/api/findCity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4007",
+					"path": [
+						"api",
+						"findCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultaCEP",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cep\" : \"68909604\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4007/api/consultaCEP",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4007",
+					"path": [
+						"api",
+						"consultaCEP"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

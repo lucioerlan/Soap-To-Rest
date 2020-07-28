@@ -1,0 +1,108 @@
+swagger: "2.0"
+info:
+  description: "<font size=\"2\" color=\"blue\">Author https://github.com/lucioerlan</font>"
+  version: "1.0.3"
+  title: "REST TO SOAP EXAMPLES"
+host: "localhost:4007" 
+schemes:
+- "http"
+paths:
+
+ 
+  /api/getAddress:
+    post:
+      tags:
+      - "MapLink"
+      summary: "Get Address by Coordinates"
+      description: "Get Address by Coordinates"
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List the city and state by passing the latitude and longitude as a parameter"
+        required: true
+        schema:
+          $ref: "#/definitions/maplinkgetAddress"
+      responses:
+        default:
+          description: "successful operation"
+          
+          
+          
+  /api/findCity:
+    post:
+      tags:
+      - "MapLink"
+      summary: "City Search"
+      description: "City Search"
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List the latitude of a place, passing city and state as a parameter"
+        required: true
+        schema:
+            $ref: "#/definitions/maplinkfindCity"
+      responses:
+        default:
+          description: "successful operation"
+          
+          
+          
+  /api/consultaCEP:
+    post:
+      tags:
+      - "Correios"
+      summary: "Serviços Síncronos"
+      description: "Serviços Síncronos"
+      operationId: ""
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List complete addresses passing the zip code as parameter"
+        required: true
+        schema:
+            $ref: "#/definitions/correio"
+      responses:
+        default:
+          description: "successful operation"
+
+
+
+definitions:
+   maplinkgetAddress:
+    type: "object"
+    required:
+    - "x"
+    - "y"
+    properties:
+      x:
+        type: "string"
+      y:
+        type: "string"
+
+   maplinkfindCity:
+    type: "object"
+    required:
+    - "state"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      state:
+        type: "string"
+        
+   correio:
+    type: "object"
+    required:
+    - "cep"
+    properties:
+      cep:
+        type: "string"
