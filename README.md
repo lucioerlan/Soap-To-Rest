@@ -43,7 +43,7 @@ You will need to install some stuff, if they are not yet installed in your machi
 
 ### Install through Github :octocat:
 
-Best way to install Project Mulla is to clone it from Github
+Best way to install is to clone it from Github
 <br>
 
 **To clone/download the boilerplate**
@@ -99,7 +99,7 @@ $ docker run -p 4007:4007 rest-to-soap/node-api
 <br>
 
 
-### Running PM2
+### Running with PM2
 
 ![pm2-soap](https://user-images.githubusercontent.com/67064886/88652569-63267c00-d0a1-11ea-84c7-ec8c6a6f2e5f.png)
 
