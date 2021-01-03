@@ -1,52 +1,58 @@
+// Constants
+const PORT = process.env.PORT || 5000;
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const cookieSession = require('cookie-session');
+const compression = require('compression');
 const express = require('express');
-const fs = require('fs');
 const ip = require('ip');
-const Keygrip = require('keygrip');
-const helmet = require('helmet');
-const path = require('path');
-const morgan = require('morgan');
-const app = express();
 require('dotenv').config();
 require('colors');
 
-const PORT = process.env.PORT; 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, '.log'), {
-  flags: 'a',
-});
+const app = express();
+const {
+  responseMiddleware,
+  unauthorizedMiddleware,
+  securityMiddleware,
+} = require('./src/middlewares');
 
+const SoapJson = require('./src/routes/soap-json-routes');
+const SwaggerRoutes = require('./src/doc/swagger-config');
+
+app.use(compression());
 app.use(cors());
-app.disable('x-powered-by');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(helmet());
+app.use(responseMiddleware);
+app.use(unauthorizedMiddleware);
+securityMiddleware(app);
 
-app.use(morgan('combined', { stream: accessLogStream }));
+// Routes
+app.use('/api', [SoapJson, SwaggerRoutes]);
 
-app.use(
-  cookieSession({
-    name: 'session',
-    keys: new Keygrip(['SEKRIT2', 'SEKRIT2'], 'SHA384', 'base64'),
-    maxAge: 5 * 100,
+// catch 404
+app.use((req, res) =>
+  res.parseReturn({
+    status: 404,
+    errors: [
+      {
+        message: `Invalid Route, Access http://${ip.address()}:${PORT}/api/docs`,
+      },
+    ],
   })
 );
 
-app.use(function (req, res, next) {
-  req.session.nowInMinutes = Math.floor(Date.now() / 5e3);
-  next();
-});
-
-app.use('/api', require('./src/routes/Router'));
-
-//Error 404
-app.get('*', (req, res) => {
-  res.send({ Error: `Invalid Route, Access http://${ip.address()}:${PORT}/api/docs` });
+app.use((err, req, res) => {
+  const error = app.get('env') === 'development' ? err : {};
+  const status = err.status || 500;
+  return res.status(status).json(error);
 });
 
 app.listen(PORT, () => {
   console.log(
-    `Server is running at port ${PORT}, see more about the application on: http://${ip.address()}:${PORT}/api/docs`.bgBlue
+    `Server is running at port ${PORT}, see more about the application on: http://${ip.address()}:${PORT}/api/docs`
+      .bgMagenta
   );
 });
+
+module.exports = app;
