@@ -1,108 +1,42 @@
 swagger: "2.0"
 info:
-  description: "<font size=\"2\" color=\"blue\">Author https://github.com/lucioerlan</font>"
+  description: '<font size="2" color="red">MIT Licença</font>'
   version: "1.0.3"
-  title: "REST TO SOAP EXAMPLES"
-host: "localhost:4007" 
+  title: "Web Scraping Api"
+  license:
+    name: "REST TO SOAP"
+    url: "https://github.com/lucioerlan"
+host: "localhost:5000"
+basePath: "/api"
 schemes:
-- "http"
+  - "http"
 paths:
-
- 
-  /api/getAddress:
+  /consultZip:
     post:
       tags:
-      - "MapLink"
-      summary: "Get Address by Coordinates"
-      description: "Get Address by Coordinates"
-      operationId: ""
+        - "ROUTES"
+      summary: "Consult Zip"
+      description: "List complete addresses passing the zip code as parameter"
+      operationId: "consult_zip"
       produces:
-      - "application/json"
+        - "application/xml"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "List the city and state by passing the latitude and longitude as a parameter"
-        required: true
-        schema:
-          $ref: "#/definitions/maplinkgetAddress"
-      responses:
-        default:
-          description: "successful operation"
-          
-          
-          
-  /api/findCity:
-    post:
-      tags:
-      - "MapLink"
-      summary: "City Search"
-      description: "City Search"
-      operationId: ""
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "List the latitude of a place, passing city and state as a parameter"
-        required: true
-        schema:
-            $ref: "#/definitions/maplinkfindCity"
-      responses:
-        default:
-          description: "successful operation"
-          
-          
-          
-  /api/consultaCEP:
-    post:
-      tags:
-      - "Correios"
-      summary: "Serviços Síncronos"
-      description: "Serviços Síncronos"
-      operationId: ""
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "List complete addresses passing the zip code as parameter"
-        required: true
-        schema:
+        - in: "body"
+          name: "body"
+          description: "Example 69914366"
+          required: true
+          schema:
             $ref: "#/definitions/correio"
       responses:
         default:
           description: "successful operation"
 
-
-
 definitions:
-   maplinkgetAddress:
+  correio:
     type: "object"
     required:
-    - "x"
-    - "y"
-    properties:
-      x:
-        type: "string"
-      y:
-        type: "string"
-
-   maplinkfindCity:
-    type: "object"
-    required:
-    - "state"
-    - "name"
-    properties:
-      name:
-        type: "string"
-      state:
-        type: "string"
-        
-   correio:
-    type: "object"
-    required:
-    - "cep"
+      - "cep"
     properties:
       cep:
-        type: "string"
+        type: "integer"
