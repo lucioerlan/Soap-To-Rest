@@ -92,12 +92,9 @@ $ npm start
 #### Or Run Docker 🐳
 
 ```
-$ docker run -p 5000:5000 soaptorest/node-api
+$ docker-compose up -d
 ```
 
-```
-$ docker build -t soaptorest/node-api .
-```
 
 <br>
 
