@@ -1,42 +1,48 @@
-swagger: "2.0"
+openapi: 3.0.0
 info:
-  description: '<font size="2" color="red">MIT Licença</font>'
-  version: "1.0.3"
-  title: "Web Scraping Api"
-  license:
-    name: "REST TO SOAP"
-    url: "https://github.com/lucioerlan"
-host: "localhost:5000"
-basePath: "/api"
-schemes:
-  - "http"
+  description: '<font size="2" color="red">MIT License</font>'
+  title: "Soap-To-Rest"
+  contact:
+    name: Erlan Lucio
+    url: https://github.com/lucioerlan
+  version: '1.0'
+servers:
+- url: http://localhost:5000/api
+  variables: {}
 paths:
   /consultZip:
     post:
       tags:
-        - "ROUTES"
-      summary: "Consult Zip"
-      description: "List complete addresses passing the zip code as parameter"
-      operationId: "consult_zip"
-      produces:
-        - "application/xml"
-        - "application/json"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Example 69914366"
-          required: true
-          schema:
-            $ref: "#/definitions/correio"
+      - ROUTES
+      summary: JSON TO XML
+      operationId: JSONTOXML
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JSONTOXMLREQUEST'
+            example:
+              cep: '69914366'
+        required: true
       responses:
-        default:
-          description: "successful operation"
-
-definitions:
-  correio:
-    type: "object"
-    required:
-      - "cep"
-    properties:
-      cep:
-        type: "integer"
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    JSONTOXMLREQUEST:
+      title: JSONTOXMLREQUEST
+      required:
+      - cep
+      type: object
+      properties:
+        cep:
+          type: string
+      example:
+        cep: '69914366'
+tags:
+- name: ROUTES
+  description: ''
