@@ -1,29 +1,27 @@
 {
 	"info": {
-		"_postman_id": "e8b2db11-ad3b-4ff6-ad77-a4b235a3f7fb",
-		"name": "SOAP TO REST",
+		"_postman_id": "63746570-1334-422a-a218-1c7f0acbac2a",
+		"name": "Soap-To-Rest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "consultZip",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
+			"name": "ROUTES",
+			"item": []
+		},
+		{
+			"name": "JSON TO XML",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cep\" : \"68909604\"\r\n}"
+					"raw": "{\r\n    \"cep\": \"69914366\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/consultZip",
