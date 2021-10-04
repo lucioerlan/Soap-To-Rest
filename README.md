@@ -3,23 +3,24 @@
 [![PRETTIER](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://gitter.im/jlongster/prettie)
 [![LICENSE](https://img.shields.io/github/license/arshadkazmi42/awesome-github-init.svg)](https://github.com/arshadkazmi42/awesome-github-init/LICENSE)
 [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/erlanlucio/)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/lucioerlan/Soap-To-Rest-Api&count_bg=%23E71A18&title_bg=%23555555&icon=dependabot.svg&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/lucioerlan/Soap-To-Rest&count_bg=%23E71A18&title_bg=%23555555&icon=dependabot.svg&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://hits.seeyoufarm.com)
 
 
 <!-- PROJECT -->
 <br />
 <p align="center">
   <h3 align="center"> 
- 
-   Web Scraping Api 🏀
+
+   Soap to Rest Api 🏂
+
   </h3> 
   <p align="center">
-    <img src="https://user-images.githubusercontent.com/66112497/84624410-b361ca00-aeb7-11ea-9982-a16adc7cf871.png" alt="Logo" >
+    <img src="https://user-images.githubusercontent.com/67064886/103471878-bb565e00-4d64-11eb-8c7d-892439a92d70.png" alt="Logo" >
     <br />
     <br />
-    <a href="https://github.com/lucioerlan/Soap-To-Rest-Api/issues">Report Bug</a>
+    <a href="https://github.com/lucioerlan/Soap-To-Rest/issues">Report Bug</a>
     ·
-    <a href="https://github.com/lucioerlan/Soap-To-Rest-Api/issues">Request Feature</a>
+    <a href="https://github.com/lucioerlan/Soap-To-Rest/issues">Request Feature</a>
   </p>
 </p>
 
@@ -27,8 +28,8 @@
 <!-- ABOUT THE PROJECT -->
 ## 🤔 About The Project
 
-Very clean api, which collects data on the Website vagas.com.br
-* Publishing https://crawlernodejs.herokuapp.com/jobs
+Communicate easily with soap protocols by sending a json.
+* Sample WSDL   .env
 
 <br>
 
@@ -40,8 +41,8 @@ Very clean api, which collects data on the Website vagas.com.br
 You'll need [Node.js](https://nodejs.org) installed on your computer in order to build this app.
 
 ```bash
-git clone https://github.com/lucioerlan/Soap-To-Rest-Api.git
-$ cd Soap-To-Rest-Api
+git clone https://github.com/lucioerlan/Soap-To-Rest.git
+$ cd Soap-To-Rest
 $ npm install
 ```
 
@@ -57,7 +58,6 @@ $ npm install
 ```
 $ cp .env-examples .env 
 ```
-* Then configure with your connection to MongoDB
 
 <br>
 
@@ -72,6 +72,15 @@ $ cp .env-examples .env
 <br>
 
 
+
+## 🎋 Request using CURL
+
+```
+$ curl -X POST -d 'cep=69914366' http://localhost:5000/api/consultZip
+```
+<br>
+
+
 <!-- RUNNING -->
 
 ## 🚀 Running
@@ -83,12 +92,9 @@ $ npm start
 #### Or Run Docker 🐳
 
 ```
-$ docker network create node-net
+$ docker-compose up -d
 ```
 
-```
-$ docker-compose up
-```
 
 <br>
 
