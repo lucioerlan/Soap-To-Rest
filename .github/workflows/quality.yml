@@ -1,0 +1,33 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Tests and Lint
+
+on: [push]
+
+jobs:
+  services:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Staring Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+    - name: Check code quality
+      run: npm run lint
+    - name: Running the tests
+      run: npm run test
+
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

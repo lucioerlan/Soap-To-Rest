@@ -1,27 +1,32 @@
 const { createLogger, format, transports } = require('winston');
 
-const { combine, timestamp, simple } = format;
-const { datetimeNow } = require('../utils/current');
-require('dotenv').config();
+const { combine, timestamp, simple, printf } = format;
+const chalk = require('chalk');
 
 /**
  * Gets the logger instance
  * @returns {LoggerInstance} winLogger
  */
 
-const timezonedTime = () => {
-  return datetimeNow();
-};
+const consoleFormat = printf(({ level, message }) => {
+  if (level === 'error') return chalk` {red ERROR} ${message}`;
+  if (level === 'warn') return chalk` {yellow WARN} ${message}`;
+  if (level === 'info') return chalk` {green INFO} ${message}`;
+  return chalk`  {cyan ${level}} ${message}`;
+});
 
 const logger = createLogger({
-  format: combine(timestamp({ format: timezonedTime }), simple()),
+  format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), simple()),
   transports: [
     new transports.Console({
       colorize: true,
+      format: consoleFormat,
     }),
     new transports.File({
-      filename: 'soap-json.log',
-      maxsize: '100mb',
+      filename: 'soap-to-rest.log',
+      maxSize: '50m',
+      maxFiles: '20d',
+      eol: '\r\n',
     }),
   ],
 });

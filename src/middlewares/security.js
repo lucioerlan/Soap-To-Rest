@@ -3,7 +3,7 @@ const ms = require('ms');
 const uuid = require('node-uuid');
 
 /**
- * Methods manipulating Headers
+ * Methods Manipulating Headers
  */
 
 const securityMiddleware = (app) => {
@@ -65,7 +65,7 @@ const securityMiddleware = (app) => {
         frameSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`],
         imgSrc: ["'data'", (req, res) => `'nonce-${res.locals.nonce}'`],
         baseUri: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:5000"], // remove in production!
+        connectSrc: ["'self'", "wss:"],
         frameAncestors: ["'none'"],
       },
       reportOnly: false,
