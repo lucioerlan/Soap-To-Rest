@@ -4,7 +4,7 @@
  */
 
 const isValidCep = (cep) => {
-  return isCEP = /^\d{8}$/.test(cep);
+  return /^\d{8}$/.test(cep);
 };
 
 module.exports = isValidCep;
