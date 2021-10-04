@@ -50,7 +50,7 @@ app.use((err, req, res) => {
 
 app.listen(PORT, () => {
   logger.info(
-    `${`Server is running at port ${PORT}, see more about the application on: http://${ip.address()}:${PORT}/api/docs`}`,
+    `Server is running at port ${PORT}, see more about the application on: http://${ip.address()}:${PORT}/api/docs`,
   );
 });
 

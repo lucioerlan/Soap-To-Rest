@@ -4,9 +4,7 @@
  */
 
 const isValidCep = (cep) => {
-  const isCEP = /^[0-9]{8}$/.test(cep);
-
-  return isCEP;
+  return isCEP = /^\d{8}$/.test(cep);
 };
 
 module.exports = isValidCep;
